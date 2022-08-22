@@ -19,10 +19,31 @@ objects:
           - /apps/compliance
       image: ${IMAGE}:${IMAGE_TAG}
       navItems:
-        - appId: "compliance"
-          title: "Compliance"
-          href: "/insights/compliance"
-          product: "Red Hat Insights"
+        image: 'quay.io/cloudservices/compliance-frontend:bdde349'
+  module:
+    manifestLocation: /apps/compliance/fed-mods.json
+    modules:
+      - id: compliance
+        module: ./RootApp
+        routes:
+          - pathname: /insights/compliance
+  navItems:
+    - expandable: true
+      routes:
+        - appId: compliance
+          href: /insights/compliance/report
+          product: Red Hat Insights
+          title: Reports
+        - appId: compliance
+          href: /insights/compliance/scappolicies
+          product: Red Hat Insights
+          title: SCAP Policies
+        - appId: compliance
+          href: /insights/compliance/systems
+          product: Red Hat Insights
+          title: Systems
+      title: Compliance
+  title: Compliance
       module:
         manifestLocation: "/apps/compliance/fed-mods.json"
         modules:
